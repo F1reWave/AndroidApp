@@ -19,7 +19,7 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Fire Wave"
+rootProject.name = "Fire Wave Android"
 include(":app")
 include(":domain")
 include(":data")
