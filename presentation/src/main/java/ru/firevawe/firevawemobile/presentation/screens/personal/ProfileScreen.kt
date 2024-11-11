@@ -20,7 +20,7 @@ internal class ProfileScreen(private val navController: NavController) : Composa
         Scaffold(bottomBar = {
             BottomBar(
                 containerColor = Theme.colors.mainColor,
-                selectedMainScreen = true,
+                selectedProfileScreen = true,
                 clickToChatsScreen = { navController.navigateeeee(ScreenRoute.Chats) },
                 clickToMainScreen = { navController.navigateeeee(ScreenRoute.Profile) }
             )
