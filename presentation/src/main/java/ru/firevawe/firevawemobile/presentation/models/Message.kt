@@ -1,6 +1,6 @@
 package ru.firevawe.firevawemobile.presentation.models
 
-data class Message (
+internal data class Message (
     val messageId: Int = 0,
     val chatId: String,
     val senderId: String,

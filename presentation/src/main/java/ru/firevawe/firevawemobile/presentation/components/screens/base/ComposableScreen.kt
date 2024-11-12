@@ -1,4 +1,4 @@
-package ru.firevawe.firevawemobile.presentation.screens.base
+package ru.firevawe.firevawemobile.presentation.components.screens.base
 
 import androidx.compose.runtime.Composable
 

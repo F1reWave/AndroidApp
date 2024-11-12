@@ -1,4 +1,4 @@
-package ru.firevawe.firevawemobile.presentation.screens.personal_chat_screen
+package ru.firevawe.firevawemobile.presentation.components.screens.personal_chat_screen
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
@@ -33,8 +33,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import ru.firevawe.firevawemobile.presentation.components.screens.base.ComposableScreen
 import ru.firevawe.firevawemobile.presentation.navigation.ScreenRoute
-import ru.firevawe.firevawemobile.presentation.screens.base.ComposableScreen
 import ru.firevawe.firevawemobile.presentation.utils.navigateeeee
 
 internal class PersonalChatScreen(private val navController: NavController) : ComposableScreen {

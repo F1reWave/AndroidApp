@@ -1,4 +1,4 @@
-package ru.firevawe.firevawemobile.presentation.screens.main_screen
+package ru.firevawe.firevawemobile.presentation.components.screens.main_screen
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
@@ -8,8 +8,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
 import ru.firevawe.firevawemobile.presentation.components.bottom_bar.BottomBar
+import ru.firevawe.firevawemobile.presentation.components.screens.base.ComposableScreen
 import ru.firevawe.firevawemobile.presentation.navigation.ScreenRoute
-import ru.firevawe.firevawemobile.presentation.screens.base.ComposableScreen
 import ru.firevawe.firevawemobile.presentation.ui.theme.Theme
 import ru.firevawe.firevawemobile.presentation.utils.navigateeeee
 
