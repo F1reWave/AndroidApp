@@ -1,59 +1,64 @@
 package ru.firevawe.firevawemobile.presentation
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.systemBarsPadding
-import androidx.compose.ui.Modifier
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
-import ru.firevawe.firevawemobile.presentation.navigation.ScreenRoute
-import ru.firevawe.firevawemobile.presentation.screens.chats_screen.ChatsScreen
-import ru.firevawe.firevawemobile.presentation.screens.main_screen.MainScreen
-import ru.firevawe.firevawemobile.presentation.screens.personal.ProfileScreen
-import ru.firevawe.firevawemobile.presentation.screens.personal_chat_screen.PersonalChatScreen
-import ru.firevawe.firevawemobile.presentation.ui.theme.MainTheme
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import org.koin.android.ext.android.getKoin
+import ru.firevawe.firevawemobile.domain.domain_model.ChatDomainModel
+import ru.firevawe.firevawemobile.domain.network.repository.ChatNetworkRepository
+import ru.firevawe.firevawemobile.domain.network.repository.MessageNetworkRepository
+import ru.firevawe.firevawemobile.domain.network.repository.UserNetworkRepository
 
 class MainActivity : ComponentActivity() {
-
+    private val koin = getKoin()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+        val chatNetworkRepository = koin.get<ChatNetworkRepository>()
+        val userNetworkRepository = koin.get<UserNetworkRepository>()
+        val messageNetworkRepository = koin.get<MessageNetworkRepository>()
+        lifecycleScope.launch(Dispatchers.IO) {
+            chatNetworkRepository.createChat(ChatDomainModel(chatId = "1", isGroupChat = false))
+            val x = chatNetworkRepository.getAllChats()
+            Log.d("test", "chats = $x")
+        }
         setContent {
-            MainTheme {
-                val navController = rememberNavController()
-                Column(
-                    modifier = Modifier.systemBarsPadding()
-                ) {
-                    NavHost(
-                        navController = navController, startDestination = ScreenRoute.Main.route
-                    ) {
-                        composable(ScreenRoute.Main.route) {
-                            MainScreen(
-                                navController = navController,
-                            ).Content()
-                        }
-                        composable(ScreenRoute.Chats.route) {
-                            ChatsScreen(
-                                navController = navController,
-                            ).Content()
-                        }
-                        composable(ScreenRoute.Profile.route) {
-                            ProfileScreen(
-                                navController = navController,
-                            ).Content()
-                        }
-                        composable(ScreenRoute.PersonalChat.route) {
-                            PersonalChatScreen(
-                                navController = navController,
-                            ).Content()
-                        }
-                    }
-                }
-            }
+//            MainTheme {
+//                val navController = rememberNavController()
+//                Column(
+//                    modifier = Modifier.systemBarsPadding()
+//                ) {
+//                    NavHost(
+//                        navController = navController, startDestination = ScreenRoute.Main.route
+//                    ) {
+//                        composable(ScreenRoute.Main.route) {
+//                            MainScreen(
+//                                navController = navController,
+//                            ).Content()
+//                        }
+//                        composable(ScreenRoute.Chats.route) {
+//                            ChatsScreen(
+//                                navController = navController,
+//                            ).Content()
+//                        }
+//                        composable(ScreenRoute.Profile.route) {
+//                            ProfileScreen(
+//                                navController = navController,
+//                            ).Content()
+//                        }
+//                        composable(ScreenRoute.PersonalChat.route) {
+//                            PersonalChatScreen(
+//                                navController = navController,
+//                            ).Content()
+//                        }
+//                    }
+//                }
+//            }
         }
     }
 }

@@ -1,4 +1,4 @@
-package ru.firevawe.firevawemobile.data.converters
+package ru.firevawe.firevawemobile.data.converters.db
 
 import androidx.room.TypeConverter
 import ru.firevawe.firevawemobile.domain.converter.BaseConverter

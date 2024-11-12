@@ -13,6 +13,6 @@ internal interface UserDao : DataAccessObject<UserEntity>,
     @Query("select * from users")
     override fun getAllAsFlow(): Flow<List<UserEntity>>
 
-    @Query("SELECT * FROM users WHERE userId = :userId")
-    suspend fun getUserById(userId: String): UserEntity?
+    @Query("SELECT * FROM users WHERE username = :username")
+    suspend fun getUserByUsername(username: String): UserEntity?
 }

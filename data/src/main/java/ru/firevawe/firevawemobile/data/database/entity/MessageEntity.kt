@@ -2,6 +2,7 @@ package ru.firevawe.firevawemobile.data.database.entity
 
 import androidx.room.Entity
 import androidx.room.ForeignKey
+import androidx.room.Index
 import androidx.room.PrimaryKey
 
 @Entity(
@@ -9,7 +10,7 @@ import androidx.room.PrimaryKey
     foreignKeys = [
         ForeignKey(
             entity = UserEntity::class,
-            parentColumns = ["userId"],
+            parentColumns = ["username"],
             childColumns = ["senderId"],
             onDelete = ForeignKey.CASCADE
         ),
@@ -19,7 +20,8 @@ import androidx.room.PrimaryKey
             childColumns = ["chatId"],
             onDelete = ForeignKey.CASCADE
         )
-    ]
+    ],
+    indices = [Index("senderId"), Index("chatId")]
 )
 internal data class MessageEntity(
     @PrimaryKey(autoGenerate = true) val messageId: Int = 0,
