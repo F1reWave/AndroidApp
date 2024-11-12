@@ -12,8 +12,6 @@ interface UserNetworkRepository {
     // Обновление данных пользователя
     suspend fun updateUser(userDomainModel: UserDomainModel)
 
-    // Получение всех пользователей
-    suspend fun getAllUsers(): List<UserDomainModel>
 
     // Удаление пользователя по имени
     suspend fun deleteUser(username: String)

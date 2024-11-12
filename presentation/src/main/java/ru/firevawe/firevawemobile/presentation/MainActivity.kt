@@ -1,5 +1,6 @@
 package ru.firevawe.firevawemobile.presentation
 
+import android.R.attr.x
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
@@ -22,11 +23,7 @@ class MainActivity : ComponentActivity() {
         val chatNetworkRepository = koin.get<ChatNetworkRepository>()
         val userNetworkRepository = koin.get<UserNetworkRepository>()
         val messageNetworkRepository = koin.get<MessageNetworkRepository>()
-        lifecycleScope.launch(Dispatchers.IO) {
-            chatNetworkRepository.createChat(ChatDomainModel(chatId = "1", isGroupChat = false))
-            val x = chatNetworkRepository.getAllChats()
-            Log.d("test", "chats = $x")
-        }
+
         setContent {
 //            MainTheme {
 //                val navController = rememberNavController()

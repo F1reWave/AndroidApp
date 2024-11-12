@@ -7,4 +7,5 @@ interface ChatDBRepository {
     suspend fun addChat(chatDomainModel: ChatDomainModel)
     suspend fun getChatById(chatId: String): ChatDomainModel?
     fun getAllChats(): Flow<List<ChatDomainModel>>
+    suspend fun deleteChat(chatDomainModel: ChatDomainModel)
 }

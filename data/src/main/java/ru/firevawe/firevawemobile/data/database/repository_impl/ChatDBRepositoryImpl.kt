@@ -21,4 +21,8 @@ internal class ChatDBRepositoryImpl(
 
     override fun getAllChats(): Flow<List<ChatDomainModel>> =
         chatDao.getAllAsFlow().map { chatDBConverter.convertABList(it) }
+
+    override suspend fun deleteChat(chatDomainModel: ChatDomainModel) {
+        chatDao.delete(chatDBConverter.convertBA(chatDomainModel))
+    }
 }

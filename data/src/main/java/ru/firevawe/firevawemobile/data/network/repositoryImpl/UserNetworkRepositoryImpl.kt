@@ -39,10 +39,6 @@ internal class UserNetworkRepositoryImpl(
         }
     }
 
-    // Получение всех пользователей
-    override suspend fun getAllUsers(): List<UserDomainModel> =
-        userNetworkConverter.convertABList(client.get("/users").body<List<UserResponse>>())
-
 
     // Удаление пользователя по имени
     override suspend fun deleteUser(username: String) {
